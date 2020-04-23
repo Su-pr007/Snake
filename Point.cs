@@ -48,9 +48,13 @@ namespace Snake
                     break;
             }
         }
+        public bool IsHit(Point p)
+        {
+            return p.x == this.x && p.y == this.y;
+        }
         public void Draw()
         {
-            if (x < 0 || y < 0)
+            if (x <= 0 || y <= 0 || x >= FoodCreator.mapWidth;)
             {
                 return;
             }
