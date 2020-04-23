@@ -41,15 +41,19 @@ namespace Snake
                     x -= offset;
                     break;
                 case Direction.UP:
-                    y += offset;
+                    y -= offset;
                     break;
                 case Direction.DOWN:
-                    y -= offset;
+                    y += offset;
                     break;
             }
         }
         public void Draw()
         {
+            if (x < 0 || y < 0)
+            {
+                return;
+            }
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
         }
