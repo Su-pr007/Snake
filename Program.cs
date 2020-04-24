@@ -57,7 +57,7 @@ namespace Snake
                 Console.WriteLine("Введите символ стен:");
                 try
                 {
-                    snakeSym = Console.ReadLine();
+                    wallSym = Convert.ToChar(Console.ReadLine());
                     break;
                 }
                 catch
@@ -65,13 +65,14 @@ namespace Snake
                     continue;
                 }
             }
+            // символ змейки
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Введите ширину карты(минимум 10):");
+                Console.WriteLine("Введите символ змейки:");
                 try
                 {
-                    mapWidth = Convert.ToInt32(Console.ReadLine());
+                    snakeSym = Convert.ToChar(Console.ReadLine());
                     break;
                 }
                 catch
@@ -79,13 +80,14 @@ namespace Snake
                     continue;
                 }
             }
+            // символ еды
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Введите ширину карты(минимум 10):");
+                Console.WriteLine("Введите символ еды:");
                 try
                 {
-                    mapWidth = Convert.ToInt32(Console.ReadLine());
+                    foodSym = Convert.ToChar(Console.ReadLine());
                     break;
                 }
                 catch
@@ -96,14 +98,14 @@ namespace Snake
 
             Console.Clear();
             // Создаём стены
-            Walls walls = new Walls(mapWidth, mapHeight);
+            Walls walls = new Walls(mapWidth, mapHeight, wallSym);
             walls.Draw();
             // Змейка
-            Point p = new Point(4, 5, '*');
+            Point p = new Point(4, 5, snakeSym);
             Snake snake = new Snake(p, 3, Direction.RIGHT);
             snake.Draw();
 
-            FoodCreator foodCreator = new FoodCreator(mapWidth, mapHeight, '@');
+            FoodCreator foodCreator = new FoodCreator(mapWidth, mapHeight, foodSym);
             Point food = foodCreator.CreateFood();
             food.Draw();
 

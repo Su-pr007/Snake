@@ -9,14 +9,14 @@ namespace Snake
     class Walls
     {
         readonly List<Figure> wallList;
-        public Walls(int mapWidth, int mapHeight)
+        public Walls(int mapWidth, int mapHeight, char wallSym)
         {
             wallList = new List<Figure>();
 
-            HorizontalLine topLine = new HorizontalLine(0, mapWidth, 0, '█');
-            HorizontalLine bottomLine = new HorizontalLine(0, mapWidth, mapHeight-1, '█');
-            VerticalLine leftLine = new VerticalLine(0, mapHeight-1, 0, '█');
-            VerticalLine rightLine = new VerticalLine(0, mapHeight-1, mapWidth, '█');
+            HorizontalLine topLine = new HorizontalLine(0, mapWidth, 0, wallSym);
+            HorizontalLine bottomLine = new HorizontalLine(0, mapWidth, mapHeight-1, wallSym);
+            VerticalLine leftLine = new VerticalLine(0, mapHeight-1, 0, wallSym);
+            VerticalLine rightLine = new VerticalLine(0, mapHeight-1, mapWidth, wallSym);
 
             wallList.Add(topLine);
             wallList.Add(bottomLine);
