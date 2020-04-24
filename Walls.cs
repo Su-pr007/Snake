@@ -8,13 +8,13 @@ namespace Snake
 {
     class Walls
     {
-        List<Figure> wallList;
+        readonly List<Figure> wallList;
         public Walls(int mapWidth, int mapHeight)
         {
             wallList = new List<Figure>();
 
-            HorizontalLine topLine = new HorizontalLine(0, mapWidth, 1, '█');
-            HorizontalLine bottomLine = new HorizontalLine(0, mapWidth, mapHeight, '█');
+            HorizontalLine topLine = new HorizontalLine(0, mapWidth, 0, '█');
+            HorizontalLine bottomLine = new HorizontalLine(0, mapWidth, mapHeight-1, '█');
             VerticalLine leftLine = new VerticalLine(0, mapHeight-1, 0, '█');
             VerticalLine rightLine = new VerticalLine(0, mapHeight-1, mapWidth, '█');
 
