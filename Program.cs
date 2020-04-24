@@ -95,78 +95,85 @@ namespace Snake
                     continue;
                 }
             }
-
-            Console.Clear();
-
-            // Отсчет
-            Console.SetCursorPosition(45, 12);
-            Console.WriteLine("3");
-            Thread.Sleep(1000);
-            
-            Console.SetCursorPosition(45, 12);
-            Console.WriteLine("2");
-            Thread.Sleep(1000);
-
-            Console.SetCursorPosition(45, 12);
-            Console.WriteLine("1");
-            Thread.Sleep(1000);
-
-            Console.Clear();
-            
-            // Создаём стены
-            Walls walls = new Walls(mapWidth, mapHeight, wallSym);
-            walls.Draw();
-            // Змейка
-            Point p = new Point(4, 5, snakeSym);
-            Snake snake = new Snake(p, 3, Direction.RIGHT);
-            snake.Draw();
-
-            FoodCreator foodCreator = new FoodCreator(mapWidth, mapHeight, foodSym);
-            Point food = foodCreator.CreateFood();
-            food.Draw();
-
             while (true)
             {
-                // Проверка на столкновение
-                if(walls.IsHit(snake) || snake.IsHitTail())
+                Console.Clear();
+
+                // Отсчет
+                Console.SetCursorPosition(45, 12);
+                Console.WriteLine("3");
+                Thread.Sleep(1000);
+
+                Console.SetCursorPosition(45, 12);
+                Console.WriteLine("2");
+                Thread.Sleep(1000);
+
+                Console.SetCursorPosition(45, 12);
+                Console.WriteLine("1");
+                Thread.Sleep(1000);
+
+                Console.Clear();
+
+                // Создаём стены
+                Walls walls = new Walls(mapWidth, mapHeight, wallSym);
+                walls.Draw();
+                // Змейка
+                Point p = new Point(4, 5, snakeSym);
+                Snake snake = new Snake(p, 3, Direction.RIGHT);
+                snake.Draw();
+
+                FoodCreator foodCreator = new FoodCreator(mapWidth, mapHeight, foodSym);
+                Point food = foodCreator.CreateFood();
+                food.Draw();
+
+                while (true)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    // Проверка на столкновение
+                    if (walls.IsHit(snake) || snake.IsHitTail())
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
 
-                    string line = "==================================";
+                        string line = "==================================";
 
-                    Console.SetCursorPosition(40, 10);
-                    Console.WriteLine(line);
+                        Console.SetCursorPosition(40, 10);
+                        Console.WriteLine(line);
 
-                    Console.SetCursorPosition(45, 12);
-                    Console.WriteLine("Игра окончена");
-                    Console.SetCursorPosition(45, 13);
-                    Console.WriteLine("Нажмите Enter для выхода.");
+                        Console.SetCursorPosition(45, 12);
+                        Console.WriteLine("Игра окончена");
+                        Console.SetCursorPosition(45, 13);
+                        Console.WriteLine("Нажмите Enter для выхода.");
 
 
-                    Console.SetCursorPosition(40, 15);
-                    Console.WriteLine(line);
-                    Console.ForegroundColor = ConsoleColor.White;
+                        Console.SetCursorPosition(40, 15);
+                        Console.WriteLine(line);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    }
+                    if (snake.Eat(food))
+                    {
+                        food = foodCreator.CreateFood();
+                        food.Draw();
+                    }
+                    else
+                    {
+                        snake.Move();
+                    }
+
+                    Thread.Sleep(100);
+                    if (Console.KeyAvailable)
+                    {
+                        ConsoleKeyInfo key = Console.ReadKey();
+                        snake.HandleKey(key.Key);
+                    }
+
+                }
+                Console.WriteLine("Напишите ESC для выхода или нажмите Enter для рестарта");
+                string end = Console.ReadLine();
+                if (end == "ESC" || end == "Esc" || end == "esc")
+                {
                     break;
                 }
-                if (snake.Eat(food))
-                {
-                    food = foodCreator.CreateFood();
-                    food.Draw();
-                }
-                else
-                {
-                    snake.Move();
-                }
-
-                Thread.Sleep(100);
-                if (Console.KeyAvailable)
-                {
-                    ConsoleKeyInfo key = Console.ReadKey();
-                    snake.HandleKey(key.Key);
-                }
-
             }
-            Console.ReadLine();
         }
     }
 }
