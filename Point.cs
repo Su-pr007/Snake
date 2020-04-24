@@ -54,10 +54,6 @@ namespace Snake
         }
         public void Draw()
         {
-            if (x <= 0 || y <= 0 || x >= FoodCreator.mapWidth;)
-            {
-                return;
-            }
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
         }

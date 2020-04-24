@@ -10,29 +10,26 @@ namespace Snake
     {
         static void Main()
         {
+
             Console.SetBufferSize(120, 30);
-            // Рамка
-            HorizontalLine topLine = new HorizontalLine(0, 119, 0, '#');
-            HorizontalLine bottomLine = new HorizontalLine(0, 119, 29, '#');
-            VerticalLine leftLine = new VerticalLine(0, 29, 0, '#');
-            VerticalLine rightLine = new VerticalLine(0, 29, 119, '#');
 
-            topLine.Draw();
-            bottomLine.Draw();
-            leftLine.Draw();
-            rightLine.Draw();
-
+            Walls walls = new Walls(119, 29);
+            walls.Draw();
             // Змейка
             Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Draw();
 
-            FoodCreator foodCreator = new FoodCreator(80, 25, '@');
+            FoodCreator foodCreator = new FoodCreator(48, 25, '@');
             Point food = foodCreator.CreateFood();
             food.Draw();
 
             while (true)
             {
+                if(walls.IsHit(snake) || snake.IsHitTail())
+                {
+                    break;
+                }
                 if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
@@ -51,7 +48,7 @@ namespace Snake
                 }
 
             }
-
+            Console.ReadLine();
         }
     }
 }

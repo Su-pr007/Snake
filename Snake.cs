@@ -39,20 +39,33 @@ namespace Snake
             nextPoint.Move(1, direction);
             return nextPoint;
         }
+        internal bool IsHitTail()
+        {
+            var head = pList.Last();
+            for(int i = 0;i<pList.Count - 2; i++)
+            {
+                if (head.IsHit(pList[i])) return true;
+            }
+            return false;
+        }
         public void HandleKey(ConsoleKey key)
         {
             switch (key)
             {
                 case ConsoleKey.LeftArrow:
+                    if (direction == Direction.RIGHT) break;
                     direction = Direction.LEFT;
                     break;
                 case ConsoleKey.RightArrow:
+                    if (direction == Direction.LEFT) break;
                     direction = Direction.RIGHT;
                     break;
                 case ConsoleKey.UpArrow:
+                    if (direction == Direction.DOWN) break;
                     direction = Direction.UP;
                     break;
                 case ConsoleKey.DownArrow:
+                    if (direction == Direction.UP) break;
                     direction = Direction.DOWN;
                     break;
                 case ConsoleKey.Escape:
