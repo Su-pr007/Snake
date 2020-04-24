@@ -13,10 +13,10 @@ namespace Snake
         {
             wallList = new List<Figure>();
 
-            HorizontalLine topLine = new HorizontalLine(0, mapWidth - 2, 0, '█');
+            HorizontalLine topLine = new HorizontalLine(0, mapWidth, 1, '█');
             HorizontalLine bottomLine = new HorizontalLine(0, mapWidth, mapHeight, '█');
-            VerticalLine leftLine = new VerticalLine(0, mapHeight, 1, '█');
-            VerticalLine rightLine = new VerticalLine(0, mapHeight, mapWidth, '█');
+            VerticalLine leftLine = new VerticalLine(0, mapHeight-1, 0, '█');
+            VerticalLine rightLine = new VerticalLine(0, mapHeight-1, mapWidth, '█');
 
             wallList.Add(topLine);
             wallList.Add(bottomLine);

@@ -28,6 +28,19 @@ namespace Snake
             {
                 if(walls.IsHit(snake) || snake.IsHitTail())
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                    Console.SetCursorPosition(40, 10);
+                    Console.WriteLine("==================================");
+
+                    Console.SetCursorPosition(45, 12);
+                    Console.WriteLine("Игра окончена");
+                    Console.SetCursorPosition(45, 13);
+                    Console.WriteLine("Нажмите Enter для выхода.");
+
+
+                    Console.SetCursorPosition(40, 15);
+                    Console.WriteLine("==================================");
                     break;
                 }
                 if (snake.Eat(food))
