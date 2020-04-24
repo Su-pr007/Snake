@@ -24,11 +24,11 @@ namespace Snake
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Введите ширину карты(минимум 10):");
+                Console.WriteLine("Введите ширину карты(минимум 10, максимум 119):");
                 try
                 {
                     mapWidth = Convert.ToInt32(Console.ReadLine());
-                    break;
+                    if (mapWidth >= 10 && mapWidth < 120) break;
                 }
                 catch
                 {
@@ -39,11 +39,11 @@ namespace Snake
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Введите высоту карты(минимум 10):");
+                Console.WriteLine("Введите высоту карты(минимум 10, максимум 29):");
                 try
                 {
                     mapHeight = Convert.ToInt32(Console.ReadLine());
-                    break;
+                    if (mapHeight >= 10 && mapHeight < 30) break;
                 }
                 catch
                 {
@@ -54,7 +54,7 @@ namespace Snake
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Введите символ стен:");
+                Console.WriteLine("Введите символ стен (+):");
                 try
                 {
                     wallSym = Convert.ToChar(Console.ReadLine());
@@ -69,7 +69,7 @@ namespace Snake
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Введите символ змейки:");
+                Console.WriteLine("Введите символ змейки (*):");
                 try
                 {
                     snakeSym = Convert.ToChar(Console.ReadLine());
@@ -84,7 +84,7 @@ namespace Snake
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Введите символ еды:");
+                Console.WriteLine("Введите символ еды (@):");
                 try
                 {
                     foodSym = Convert.ToChar(Console.ReadLine());
@@ -97,6 +97,22 @@ namespace Snake
             }
 
             Console.Clear();
+
+            // Отсчет
+            Console.SetCursorPosition(45, 12);
+            Console.WriteLine("3");
+            Thread.Sleep(1000);
+            
+            Console.SetCursorPosition(45, 12);
+            Console.WriteLine("2");
+            Thread.Sleep(1000);
+
+            Console.SetCursorPosition(45, 12);
+            Console.WriteLine("1");
+            Thread.Sleep(1000);
+
+            Console.Clear();
+            
             // Создаём стены
             Walls walls = new Walls(mapWidth, mapHeight, wallSym);
             walls.Draw();
