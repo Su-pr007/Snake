@@ -169,7 +169,7 @@ namespace Snake
                 }
                 Console.WriteLine("Напишите ESC для выхода или нажмите Enter для рестарта");
                 string end = Console.ReadLine();
-                if (end == "ESC" || end == "Esc" || end == "esc")
+                if (end == "ESC" || end == "Esc" || end == "esc" || end == "ESCAPE" || end == "Escape" || end == "escape")
                 {
                     break;
                 }
