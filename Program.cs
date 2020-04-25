@@ -10,17 +10,14 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-
             HorizontalLine line1 = new HorizontalLine(0, 80, 0, '#');
-            line1.Draw();
-
             HorizontalLine line2 = new HorizontalLine(0, 80, 25, '#');
-            line2.Draw();
-
             VerticalLine line3 = new VerticalLine(0, 25, 0, '#');
-            line3.Draw();
-
             VerticalLine line4 = new VerticalLine(0, 25, 80, '#');
+
+            line1.Draw();
+            line2.Draw();
+            line3.Draw();
             line4.Draw();
 
 
