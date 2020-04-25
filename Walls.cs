@@ -13,9 +13,9 @@ namespace Snake
         {
             wallList = new List<Figure>();
 
-            HorizontalLine topLine = new HorizontalLine(0, mapWidth - 2, 0, '█');
-            HorizontalLine bottomLine = new HorizontalLine(0, mapWidth, mapHeight, '█');
-            VerticalLine leftLine = new VerticalLine(0, mapHeight, 1, '█');
+            HorizontalLine topLine = new HorizontalLine(0, mapWidth, 0, '█');
+            HorizontalLine bottomLine = new HorizontalLine(0, mapWidth, mapHeight-1, '█');
+            VerticalLine leftLine = new VerticalLine(0, mapHeight, 0, '█');
             VerticalLine rightLine = new VerticalLine(0, mapHeight, mapWidth, '█');
 
             wallList.Add(topLine);
