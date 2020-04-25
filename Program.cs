@@ -12,12 +12,12 @@ namespace Snake
         {
             // Задаём размеры консоли
             Console.SetBufferSize(120, 30);
-            int mapWidth = 0;
-            int mapHeight = 0;
+            int mapWidth;
+            int mapHeight;
 
-            char snakeSym = '*';
-            char wallSym = '*';
-            char foodSym = '*';
+            char snakeSym;
+            char wallSym;
+            char foodSym;
             // Спрашиваем настройки игры
 
             // ширину карты
