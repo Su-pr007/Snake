@@ -133,19 +133,17 @@ namespace Snake
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
 
-                        string line = "==================================";
+                        new HorizontalLine(40, 74, 10, '=').Draw();
 
-                        Console.SetCursorPosition(40, 10);
-                        Console.WriteLine(line);
-
-                        Console.SetCursorPosition(45, 12);
-                        Console.WriteLine("Игра окончена");
+                        Console.SetCursorPosition(50, 12);
+                        Console.WriteLine("Игра окончена.");
                         Console.SetCursorPosition(45, 13);
-                        Console.WriteLine("Нажмите Enter для выхода.");
+                        Console.WriteLine("Нажмите Enter для рестарта");
+                        Console.SetCursorPosition(45, 14);
+                        Console.WriteLine("или напишите ESC для выхода.");
 
-
-                        Console.SetCursorPosition(40, 15);
-                        Console.WriteLine(line);
+                        new HorizontalLine(40, 74, 16, '=').Draw();
+                        Console.WriteLine();
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
                     }
@@ -167,7 +165,6 @@ namespace Snake
                     }
 
                 }
-                Console.WriteLine("Напишите ESC для выхода или нажмите Enter для рестарта");
                 string end = Console.ReadLine();
                 if (end == "ESC" || end == "Esc" || end == "esc" || end == "ESCAPE" || end == "Escape" || end == "escape")
                 {
